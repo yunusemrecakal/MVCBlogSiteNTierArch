@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Core.Entities.Article>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleHeading)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Topics)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleHeading)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @foreach (var item2 in item.Topics)
+                    {
+                        <ul>
+                            <li>
+                                @Html.DisplayFor(modelItem => item2.TopicName)
+                            </li>
+                        </ul>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

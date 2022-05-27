@@ -1,0 +1,81 @@
+﻿@model WebUI.Models.ViewModels.UserAndDetailVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserDetail.UserFirstName" class="control-label"></label>
+                <input asp-for="UserDetail.UserFirstName" class="form-control" />
+                <span asp-validation-for="UserDetail.UserFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.UserSurname" class="control-label"></label>
+                <input asp-for="UserDetail.UserSurname" class="form-control" />
+                <span asp-validation-for="UserDetail.UserSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.UserBirthDate" class="control-label"></label>
+                <input type="date" asp-for="UserDetail.UserBirthDate" class="form-control" />
+                <span asp-validation-for="UserDetail.UserBirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserDetail.UserGender, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    Male
+                    @Html.RadioButtonFor(model => model.UserDetail.UserGender, true)
+                    Female
+                    @Html.RadioButtonFor(model => model.UserDetail.UserGender, false)
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.UserJob" class="control-label"></label>
+                <input asp-for="UserDetail.UserJob" class="form-control" />
+                <span asp-validation-for="UserDetail.UserJob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.AboutUser" class="control-label"></label>
+                <input type="text" asp-for="UserDetail.AboutUser" class="form-control" />
+                <span asp-validation-for="UserDetail.AboutUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserDetail.UserPhoto" class="control-label">Upload Photo(jpeg/git/png):</label>
+                <input type="file" asp-for="UserDetail.UserPhoto" class="form-control" id="Photo" accept="image/jpeg,image/gif,image/png" />
+            </div>
+            <div class="form-group">
+                <label asp-for="User.UserName" class="control-label"></label>
+                <input asp-for="User.UserName" class="form-control" />
+                <span asp-validation-for="User.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.UserMail" class="control-label"></label>
+                <input asp-for="User.UserMail" class="form-control" />
+                <span asp-validation-for="User.UserMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="User.Password" class="control-label"></label>
+                <input asp-for="User.Password" class="form-control" />
+                <span asp-validation-for="User.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
